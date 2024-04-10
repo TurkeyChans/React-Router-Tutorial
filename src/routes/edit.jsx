@@ -11,7 +11,7 @@ import {
     await updateContact(params.contactId, updates);
     return redirect(`/contacts/${params.contactId}`);
   }
-  
+{/*Redirecting new records to the edit page*/}
 export default function EditContact() {
   const { contact } = useLoaderData();
 
