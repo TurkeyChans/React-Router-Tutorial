@@ -18,6 +18,8 @@ export async function action({ request, params }) {
   let formData = await request.formData();
   return updateContact(params.contactId, {
     favorite: formData.get("favorite") === "true",
+    block: formData.get("block") === "true",
+
   });
 }
 export default function Contact() {
@@ -44,6 +46,7 @@ export default function Contact() {
             <i>No Name</i>
           )}{" "}
           <Favorite contact={contact} />
+          <Block contact={contact} />
         </h1>
 
         {contact.twitter && (
@@ -103,6 +106,30 @@ function Favorite({ contact }) {
         }
       >
         {favorite ? "★" : "☆"}
+      </button>
+      </fetcher.Form>
+  );
+}
+
+function Block({ contact }) {
+  const fetcher = useFetcher();
+  // yes, this is a `let` for later
+  let block = contact.block;
+  if (fetcher.formData) {
+    block = fetcher.formData.get("Block") === "true";
+  }
+  return (
+    <fetcher.Form method="post">
+      <button
+        name="block"
+        value={block ? "false" : "true"}
+        aria-label={
+          block
+            ? "Remove from favorites"
+            : "Add to favorites"
+        }
+      >
+        {block ? "Block" : "Unblock"}
       </button>
       </fetcher.Form>
   );

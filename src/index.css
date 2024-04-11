@@ -7,6 +7,10 @@ html {
   box-sizing: inherit;
 }
 
+.blocking {
+  color: #f44250;
+  
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -380,3 +384,4 @@ i {
   justify-content: center;
   width: 100%;
 }
+
